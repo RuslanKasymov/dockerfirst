@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-service
+  labels:
+    app: php-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: php-service
+  template:
+    metadata:
+      labels:
+        app: php-service
+    spec:
+      containers:
+        - name: php-service
+          image: ruskasymov/dockerfirst:latest
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /health/
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health/
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
