@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: php-service-ingress
+  name: dockerfirst-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -9,10 +9,10 @@ spec:
     - host: arch.homework
       http:
         paths:
-          - path: /
+          - path: /health/
             pathType: Prefix
             backend:
               service:
-                name: php-service
+                name: dockerfirst
                 port:
                   number: 80

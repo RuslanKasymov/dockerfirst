@@ -5,5 +5,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_SERVER['REQUEST_URI'] === '/health
     exit;
 }
 
-header("HTTP/1.1 404 Not Found");
+//header("HTTP/1.1 404 Not Found");
 echo "Not Found";
